@@ -77,3 +77,28 @@ pub fn solve_part1() -> i64 {
 
     result
 }
+
+pub fn solve_part2() -> i64 {
+    let input = fs::read_to_string("input/day2_part2.txt").expect("Error reading file");
+
+    let mut total_power = 0;
+
+    for line in input.lines() {
+        let color_counts = parse_line(line).1;
+
+        let mut max_powers = (0, 0, 0);
+
+        for (count, color) in color_counts.iter() {
+            match color {
+                Color::Red => max_powers.0 = max_powers.0.max(*count),
+                Color::Green => max_powers.1 = max_powers.1.max(*count),
+                Color::Blue => max_powers.2 = max_powers.2.max(*count),
+            }
+        }
+
+        let product = max_powers.0 * max_powers.1 * max_powers.2;
+        total_power += product;
+    }
+
+    total_power
+}

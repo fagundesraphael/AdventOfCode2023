@@ -9,4 +9,5 @@ fn main() {
     // Day 2
 
     println!("Day 2, part 1: {}", day2::solve_part1());
+    println!("Day 2, part 2: {}", day2::solve_part2());
 }
